@@ -1,3 +1,4 @@
+import R from 'ramda';
 import test from 'ava';
 import mapNested from '../src/map-nested';
 
@@ -52,7 +53,7 @@ test('it should replace a property in an object nested in an array', (t) => {
 
 test('it should replace a property using key in an object nested in an array', (t) => {
     const input = ['value 1', 'value 2', { a: 'property 1', b: 'property 2' }, 'value 3'];
-    const output = mapNested((val, key) => key === 'b' ? 'something else' : val, input);
+    const output = mapNested((val, key) => R.equals(key, ['2', 'b']) ? 'something else' : val, input);
 
     t.deepEqual(output, ['value 1', 'value 2', { a: 'property 1', b: 'something else' }, 'value 3']);
 });

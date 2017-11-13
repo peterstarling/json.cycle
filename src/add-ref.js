@@ -1,14 +1,10 @@
 import R from 'ramda';
 
-export default R.pipe(
-    R.unapply(R.identity),
-    R.converge(
-        console.log,
-        [
-            R.pipe(
-                R.slice(0, 1),
-                R
-            )
-        ]
-    )
-);
+
+export default R.curry((arr, path, val) => R.append(
+    [
+        '$' + path.map(a => typeof a === 'number' ? ('[' + a + ']') : ('.' + a)).join(''),
+        val
+    ],
+    arr
+));

@@ -1,7 +1,7 @@
 import test from 'ava';
 import addRef from '../src/add-ref';
 
-test.only('it should add a reference to a base object', (t) => {
+test('it should add a reference to a base object', (t) => {
     const output = addRef([], [], 'some val');
 
     t.deepEqual(output, [['$', 'some val']]);
