@@ -4,7 +4,7 @@
 
 Library enables stringifying cyclic structures such as:
 
-```
+```javascript
 const a = { property1: 'value' };
 a.property2 = a;
 
@@ -15,7 +15,7 @@ JSON.stringify(a);
 
 To encode circular structure with conversion of cyclic elements to JSON.path do:
 
-```
+```javascript
 import '../src/json-encode-cycles';
 
 (...)
